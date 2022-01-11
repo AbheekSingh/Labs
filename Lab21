@@ -1,0 +1,43 @@
+def convert_list(scores: list) -> None:
+    q = 0
+    for i in scores:
+        new = []
+        new.append(i)
+        scores.remove(scores[q])
+        scores.insert(q,new)
+        q +=1
+    pass
+
+def avg_score(score: dict) -> int:
+    new = 0
+    for i in score.keys():
+        new = new + score[i]
+    return int(new/len(score))
+    pass
+
+def dict_from_file2(fname: str) -> dict:
+    newdictionary = {}
+    stringyboi = ""
+    with open(fname, "r") as f:
+        x = f.readlines()
+    for ivar in x:
+        stringyboi = stringyboi + ivar.replace("\n", ", ")
+    filevar = stringyboi.split(", ")
+    for ivar in filevar:
+        if len(ivar) > 1:
+            ivar = ivar.strip("()")
+            if ivar.split(" ")[0] not in newdictionary.keys():
+                newdictionary[ivar.split(" ")[0]] = [int(ivar.split(" ")[1])]
+            else:
+                newdictionary[ivar.split(" ")[0]].append(int(ivar.split(" ")[1]))
+    return newdictionary
+
+def read_two_files(fname1: str, fname2: str) -> dict:
+    return {}
+
+def write_dict_to_file(scores: dict, fname: str) -> None:
+    f = open(fname, "w")
+    for i in scores.keys():
+        f.write((i + ": " + str(scores[i]).strip("[']").replace("'", "")) + "\n")
+    f.close()
+    pass
