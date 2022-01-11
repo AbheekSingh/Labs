@@ -1,0 +1,63 @@
+def string_to_dict(p1: str) -> dict:
+    newdict = {}
+    a = (p1[1:len(p1)-1])
+    new = a.replace("[", "")
+    cool = new.replace("]", "")
+    final = cool.split(", ")
+    for i in range(len(final)):
+        if i % 2 == 0:
+            newdict[final[i]] = int(final[i+1])
+    return newdict
+
+def list_of_lists_to_dict(p1: list) -> dict:
+    newdict = {}
+    for i in p1:
+        templist = []
+        for ii in range(len(i)):
+            if ii > 0:
+                templist.append(i[ii])
+        newdict[i[0]] = templist
+    return newdict
+
+def union(d1: dict, d2: dict) -> dict:
+    mydict = {}
+    newdict = {}
+    newdict.update(d1)
+    newdict.update(d2)
+    for k1 in d1.keys():
+        newlist = []
+        for k2 in d2.keys():
+            if k1 == k2:
+                newlist.append(d1[k1])
+                newlist.append(d2[k2])
+                mydict[k1] = newlist
+                newdict.pop(k1)
+
+    newdict.update(mydict)
+    for i in newdict.keys():
+        if isinstance(newdict[i], int):
+            newdict[i] = [newdict[i]]
+
+    return newdict
+
+def intersection(d1: dict, d2: dict) -> dict:
+    mydict = {}
+    newdict = {}
+    newdict.update(d1)
+    newdict.update(d2)
+    for k1 in d1.keys():
+        newlist = []
+        for k2 in d2.keys():
+            if k1 == k2:
+                newlist.append(d1[k1])
+                newlist.append(d2[k2])
+                mydict[k1] = newlist
+                newdict.pop(k1)
+
+    newdict.update(mydict)
+    for i in newdict.keys():
+        if isinstance(newdict[i], int):
+            newdict[i] = [newdict[i]]
+
+    return mydict
+    pass
