@@ -1,0 +1,33 @@
+def abbreviate(p1: str) -> str:
+    if p1.count(" ") == 0:
+        return p1[0] + p1[1] + p1[2]
+    elif p1.count(" ") == 1:
+        new = p1.split(" ")
+        return new[0][0] + new[0][1] + new[1][0]
+    elif p1.count(" ") == 2:
+        cool = p1.split(" ")
+        return cool[0][0] + cool[1][0] + cool[2][0]
+    pass
+
+def convert_address_list(p1: list) -> list:
+    newlist = []
+    for i in p1:
+        newlist.append(str(i))
+    return newlist
+
+def two_largest_ints(p1: list) -> list:
+    a = sorted(p1, reverse=True)
+    return a[0:2]
+
+
+def num_failing_lab_scores(p1: dict) -> int:
+    counter = 0
+    for i in p1:
+        if i.startswith("lab"):
+            if int(p1[i]) < 50:
+                counter = counter + 1
+    return counter
+
+def last_half_backwards(p1: str) -> str:
+    new = (p1[len(p1)//2:len(p1)])
+    return new[::-1]
