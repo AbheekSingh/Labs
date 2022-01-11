@@ -1,0 +1,36 @@
+def populate_dict(keyNames: list, fname: str) -> dict:
+    with open(fname, 'r') as f:
+        lines = f.readline()
+    dict1 = {}
+    new = lines.strip()
+    cool = new.split(", ")
+    for i in range(len(keyNames)):
+        dict1[keyNames[i]] = cool[i]
+    return dict1
+
+def dict_from_file(fname: str) -> dict:
+    dict1 = {}
+    with open(fname,'r') as f:
+        lines = f.readline()
+        new = lines.strip()
+        cool = new.split(", ")
+    for i in range(len(cool)):
+        name, score = cool[i].strip().split(" ")
+        name = name[1:]
+        score = score[:len(score)-1]
+        dict1[name] = int(score)
+    return dict1
+
+def write_dict_to_file(score: dict, fname: str) -> None:
+    with open(fname, 'w') as w:
+        for i in score.keys():
+            w.write(i + ": " + str(score[i]) + '\n')
+    pass
+
+def num_failing_scores(gradebook: dict) -> int:
+    num = 0
+    for i in gradebook.keys():
+        if gradebook[i] < 50:
+            num += 1
+    return num
+    pass
