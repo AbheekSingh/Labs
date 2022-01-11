@@ -1,0 +1,51 @@
+# input = "tag:val, tag2:, tag3:val3
+# return "<tag>val</tag> <tag2/> <tag3>val3</tag3>"
+def convert_to_html(p1: str) -> str:
+    if len(p1.split(":")) == 2:
+        cool = p1.split(":")
+        if cool[1].startswith("val"):
+            Sean = "<" + cool[0] + ">" + cool[1] + "</" + cool[0] + ">"
+            return Sean
+        else:
+            cooler = p1.split(":")
+            josh = "<" + cooler[0] + "/>"
+            return josh
+    else:
+        coolest = p1.split(", ")
+        newker = coolest[0].split(":")
+        newner = coolest[1].split(":")
+        newexample = "<" + newker[0] + ">" + newker[1] + "</" + newker[0] + ">" + "<" + newner[0] + "/>"
+        return newexample
+
+# input is list of strings; if len(input) is odd, return middle item;
+# else return two middle items concatenated together
+def middle_item_or_items(p1: list) -> str:
+    if len(p1) % 2 == 1:
+        new = p1[len(p1) // 2]
+        return new
+    else:
+        cool = len(p1) // 2
+        new = p1[(cool - 1)]
+        another = p1[cool]
+        return new + another
+
+# input is a list of strings ints
+# return the first three strings in input
+def first_three_strings(p1: list) -> list:
+    newlist = []
+    list = []
+    for i in p1:
+        if type(i) == int:
+            newlist.append(i)
+        else:
+            list.append(i)
+    return list[0:3]
+
+# input = {lab1: 88, lab2: 82, midterm:99, final: 91, lab3: 88}
+def just_lab_scores(p1: dict) -> dict:
+    dict = {}
+    for i in p1:
+        if i.startswith("lab"):
+            dict[i] = p1[i]
+    return dict
+    pass
