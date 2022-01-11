@@ -1,0 +1,38 @@
+    # read file
+# first line is header:
+# name, lab1, lab2, lab3, midterm, lab4, lab5, final
+# rest of lines are data:
+# jen, 88, 81, 82, 90, 80, 84, 90
+# joe, 88, 81, 82, 90, 80, 84, 90
+# return list of dicts
+def gradebook1(fname: str) -> list:
+    returnlist = []
+    with open(fname, "r") as f:
+        lines = f.readlines()
+        headerlist = lines[0].strip("\n").split(", ") # [name, lab1, lab2, midterm, lab3, final]
+        for i in range(len(lines)):
+            if i > 0:
+                mydict = {}
+                templist = lines[i].strip().split(", ")
+                mydict.update(dict(zip(headerlist, templist)))
+                returnlist.append(mydict)
+    return returnlist
+
+
+# return dict of lists
+# {"name": ["jen", "joe"], lab1:[]...}
+def gradebook2(fname: str) -> dict:
+    newdict = {}
+    with open(fname, "r") as f:
+        lines = f.readlines()
+    keys = lines[0].strip().split(", ")
+    for i in keys:
+        newdict[i] = []
+    vals = lines[1:]
+    for j in vals:
+        values = j.strip().split(", ")
+        for ii in range(len(keys)):
+            k = keys[ii]
+            v = values[ii]
+            newdict[k].append(v)
+    return newdict
