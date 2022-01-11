@@ -1,0 +1,42 @@
+def package_dicts(d1: dict, d2: dict) -> list:
+    return [d1, d2]
+
+def cumulative_grade(d1: dict) -> dict:
+    totalgr = 0
+    labgrade = 0
+    newdict = {}
+    midterm12 = 0
+    totalfinalgrade = 0
+    #input = {"name": "joe", "lab1": 88, "lab3": 92, "hw1": 8, "hw3": 6, "midterm": 85, "final": 95}
+    newdict["name"] = d1["name"]
+    for i in d1.keys():
+        if "lab" in i:
+            labgrade += d1[i]
+            totalgr += 1
+        if "midterm" in i:
+            midterm12 = d1[i]
+        if "final" in i:
+            totalfinalgrade = d1[i]
+    newdict["cumulative_grade"] = (labgrade/totalgr)*0.6 + midterm12*0.2 + totalfinalgrade*0.2
+    return newdict
+
+
+def gradebook(key_names: list, fname: str) -> list:
+    newdict = []
+    with open(fname, "r") as f:
+        lines = f.readlines()
+    # key_names = ["name", "lab1", "lab2", "midterm"]
+    # [jen 88:47:90\n, joe 87:46:91]
+    for i in lines:
+        name = [i.split(" ")[0]] + i.split(" ")[1].strip().split(":") # [88, 47, 90]
+        newdict.append(dict(zip(key_names, name)))
+    return newdict
+
+
+def dict_from_file3(fname: str) -> dict:
+    cooldict = {}
+    with open(fname, "r") as f:
+        lines = f.readlines()
+    for i in lines:
+        cooldict[i.split(" ")[0]] = i.split(" ")[1].strip().split(":")
+    return cooldict
