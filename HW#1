@@ -1,0 +1,25 @@
+def squareEach(nums:list) -> list:
+    for i in range(len(nums)):
+        nums[i] = nums[i] * nums[i]
+    return nums
+
+def is_leap_year(p1:int) -> bool:
+    if p1 > 0 and p1 < 10000:
+        if p1%4 == 0:
+            if p1%400 == 0:
+                return True
+            elif p1%200 == 0:
+                return False
+            else:
+                return True
+    return False
+
+def GCD(n:int,m:int):
+    while m != 0: 
+        x = m
+        m = n % m
+        n = x
+    return n
+
+
+
