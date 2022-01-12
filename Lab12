@@ -1,0 +1,46 @@
+def get_list_of_words(string_param:str):
+    return string_param.split(' ')
+
+def make_sentence(list_param:str):
+    str1 = ""
+    for i in range(len(list_param)):
+        str1 = str1 + list_param[i]
+        if list_param.index(list_param[i]) < len(list_param):
+            str1 = str1 + " "
+    return str1[0:len(str1)-1]
+
+def reverse_words(list):
+    word_string = list.split()
+    revlis = word_string[:: -1]
+    rev_sen = " ".join(revlis)
+    return rev_sen
+
+def floor_log_base_2(p1:int):
+    count = 0
+    while p1 >= 2:
+        p1 = p1 // 2
+        count = count + 1
+    return count
+
+def next_char(p1: str) -> str:
+    if len(p1) != 1 or not p1.islower():
+        return p1
+
+    val = ord(p1) + 1
+    if val > ord("z"):
+        val -= 26
+    return chr(val)
+
+def next_vowel(p1:str) -> str:
+    if p1 in 'a':
+        return 'a'
+    if p1 in 'bcde':
+        return 'e'
+    if p1 in 'efghi':
+        return 'i'
+    if p1 in 'jklmno':
+        return 'o'
+    if p1 in 'pqrstu':
+        return 'u'
+    if p1 in 'vwxyz':
+        return 'a'
