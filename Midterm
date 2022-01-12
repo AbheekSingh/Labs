@@ -1,0 +1,37 @@
+def time_next_event(p1:str):
+    g = p1.split(", ")
+    new = g[0]
+    cool = new.split(": ")
+    return g[1] + " " + cool[1]
+
+def list_endswith_ing(plist:list):
+    newlist = []
+    for i in plist:
+        if i.endswith('ing'):
+            newlist.append(i)
+    return newlist
+def words_before_sentences(plist:list):
+    newlist = []
+    fakelist = []
+    finalist = []
+    for i in plist:
+        if " " in i:
+            newlist.append(i)
+        else:
+            fakelist.append(i)
+    finalist = fakelist + newlist
+    return finalist
+
+def name_initial(p1:str):
+    if p1.count(" ") == 1:
+        h = p1.split(" ")
+        l = h[0][0] + h[1][0]
+        return l.upper()
+    elif p1.count(" ") == 2:
+        g = p1.split(" ")
+        n = len(g)
+        if len(g) == 3:
+            u = g[0][0] + g[2][0]
+        return u.upper()
+    else:
+        return
